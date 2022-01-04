@@ -23,19 +23,17 @@ app.get('/', (req, res) => {
 
 const allowedOrigins = ['http://localhost:3000'];
 app.use(cors());
-// app.use(
-//   cors({
-//     origin: function (origin, callback) {
-//       if (!origin || allowedOrigins.indexOf(origin) === -1) {
-//         const msg =
-//           'The CORS policy for this site does not ' +
-//           'allow access from the specified Origin.';
-//         return callback(msg, false);
-//       }
-//       return callback(null, true);
-//     },
-//   })
-// );
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.indexOf(origin) === -1) {
+        const msg = 'The CORS policy for this site does not ' + 'allow access from the specified Origin.';
+        return callback(msg, false);
+      }
+      return callback(null, true);
+    },
+  })
+);
 
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Hello World' });
@@ -46,7 +44,5 @@ app.use('/members', membersRoute);
 
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() =>
-    app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
-  )
+  .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
   .catch((error) => console.log(error.message));
