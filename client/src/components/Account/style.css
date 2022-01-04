@@ -1,0 +1,53 @@
+.detail {
+  padding: 10px;
+}
+
+.detail p {
+  margin-top: 10px;
+  color: #283780;
+  font-weight: 500;
+}
+
+.detail h3 {
+  color: #283780;
+}
+
+.detail .btn {
+  width: 150px;
+  margin: 10px auto;
+  text-transform: none;
+  display: block;
+}
+
+.edit {
+  padding: 10px;
+}
+
+.edit .center {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit p {
+  margin-right: 5px;
+  color: #283780;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.edit h3 {
+  color: #283780;
+}
+
+.edit .btn {
+  width: 150px;
+  margin: 10px;
+  text-transform: none;
+}
+
+.edit .btn-container {
+  display: flex;
+  justify-content: center;
+}
