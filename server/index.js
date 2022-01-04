@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
   res.status(200).json({ message: 'Hello World' });
 });
 
-const allowedOrigins = ['http://localhost:3000', 'https://bluesharks.netlify.app/'];
+const allowedOrigins = ['http://localhost:3000', 'https://bluesharks.netlify.app'];
 app.use(
   cors({
     origin: function (origin, callback) {
