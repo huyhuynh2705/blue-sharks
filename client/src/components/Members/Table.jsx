@@ -76,6 +76,7 @@ const Table = ({ data, setIdDetail }) => {
         <table>
           <tbody>
             <tr>
+              <th>Xem</th>
               <th>Họ và tên</th>
               <th>Khóa</th>
               <th>Ban</th>
@@ -95,7 +96,10 @@ const Table = ({ data, setIdDetail }) => {
               <th>Địa chỉ ở TPHCM</th>
             </tr>
             {rows.map((row) => (
-              <tr key={row.id} onClick={() => setIdDetail(row.id)}>
+              <tr key={row.id}>
+                <td onClick={() => setIdDetail(row.id)}>
+                  <span>Chi tiết</span>
+                </td>
                 <td>{row.fullName}</td>
                 <td>{row.schoolYear}</td>
                 <td>{row.department}</td>

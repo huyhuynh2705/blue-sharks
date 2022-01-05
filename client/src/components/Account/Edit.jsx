@@ -67,7 +67,7 @@ const Edit = ({ setEdit, data }) => {
       <h3>Thông tin cá nhân</h3>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               style={{ margin: '10px 0px' }}
               name="fullName"
@@ -172,7 +172,7 @@ const Edit = ({ setEdit, data }) => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <InputLabel id="department">Ban chuyên môn</InputLabel>
               <Select

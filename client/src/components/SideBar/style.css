@@ -1,7 +1,5 @@
 .sidebar {
   padding: 10px 0px;
-  border-right: 1px solid #9a9a9a;
-  height: 90vh;
 }
 
 .tab {
@@ -23,4 +21,13 @@
 .tab:hover {
   background-color: #ebebeb;
   letter-spacing: 1px;
+}
+
+@media screen and (max-width: 600px) {
+  .tab {
+    justify-content: center;
+  }
+  .tab p {
+    display: none;
+  }
 }
