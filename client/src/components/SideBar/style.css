@@ -24,8 +24,15 @@
 }
 
 @media screen and (max-width: 600px) {
+  .sidebar {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px;
+  }
   .tab {
     justify-content: center;
+    width: 100%;
+    padding: 10px;
   }
   .tab p {
     display: none;

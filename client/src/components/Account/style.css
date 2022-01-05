@@ -23,6 +23,10 @@
   padding: 10px;
 }
 
+.edit .container {
+  margin: 10px 0;
+}
+
 .edit .center {
   margin-bottom: 5px;
   display: flex;

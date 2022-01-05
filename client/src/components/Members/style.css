@@ -6,7 +6,7 @@
   border-collapse: collapse;
   width: 100%;
   display: block;
-  overflow-x: auto;
+  overflow-x: scroll;
   white-space: nowrap;
 }
 
@@ -20,6 +20,7 @@ th {
 .table td span {
   color: #2c84c6;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .table tr:nth-child(even) {

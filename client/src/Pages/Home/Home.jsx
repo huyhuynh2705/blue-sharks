@@ -4,12 +4,12 @@ import ApplicationBar from '../../components/ApplicationBar/ApplicationBar';
 import Sidebar from '../../components/SideBar/SideBar';
 import Account from '../../components/Account/Account';
 import Members from '../../components/Members/Members';
-import Traditional from '../../components/Traditional/Traditional';
+import Activities from '../../components/Activities/Activities';
 
 const renderTab = (tab) => {
   switch (tab) {
     case 0:
-      return <Traditional />;
+      return <Activities />;
     case 1:
       return <Account />;
     case 2:
@@ -25,10 +25,10 @@ const Home = () => {
     <div>
       <ApplicationBar />
       <Grid container>
-        <Grid item xs={2}>
+        <Grid item xs={12} sm={2}>
           <Sidebar tab={tab} setTab={setTab} />
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={12} sm={10}>
           {renderTab(tab)}
         </Grid>
       </Grid>

@@ -1,0 +1,89 @@
+.activities {
+  margin: 10px;
+}
+
+.activities .calendar {
+  padding: 0px 10px;
+}
+
+.activity {
+  background-color: #fafafa;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgb(218, 218, 218);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.activity .content {
+  padding-right: 10px;
+}
+
+.activity .action-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.activity .action .flex {
+  display: flex;
+  align-items: center;
+}
+
+.activity .action .flex p {
+  margin-left: 5px;
+}
+
+.activity p {
+  margin: 5px 0px;
+}
+
+.activity a {
+  font-weight: 600;
+}
+
+.activity h5 {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 900px) {
+  .activities .calendar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .activities {
+    margin: 0px;
+  }
+
+  .activities .calendar {
+    display: none;
+  }
+
+  .activity {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgb(218, 218, 218);
+    padding: 5px;
+    margin: 10px 0px;
+  }
+
+  .activity .action-container {
+    display: block;
+  }
+
+  .activity .action p span {
+    display: none;
+  }
+
+  .activity .action {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .activity .action .flex {
+    display: flex;
+  }
+}
