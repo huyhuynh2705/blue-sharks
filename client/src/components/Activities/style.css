@@ -3,7 +3,7 @@
 }
 
 .activities .calendar {
-  padding: 0px 10px;
+  padding-left: 10px;
 }
 
 .activity {
@@ -38,13 +38,16 @@
   margin: 5px 0px;
 }
 
-.activity a {
+.activity .link {
   font-weight: 600;
+  color: #2c84c6;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .activity h5 {
   font-weight: 500;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 @media screen and (max-width: 900px) {
@@ -80,7 +83,7 @@
 
   .activity .action {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
 
   .activity .action .flex {

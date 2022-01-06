@@ -3,43 +3,76 @@ import { Button, Grid } from '@mui/material';
 import './style.css';
 import EventBusyIcon from '@mui/icons-material/EventBusy';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
-const Activity = () => {
+const dateFormatter = (date) => {
+  return date.slice(8, 10) + '/' + date.slice(5, 7) + '/' + date.slice(0, 4);
+};
+
+const reduceDepartmentName = (name) => {
+  const words = name.split(' ');
+  return words.map((word) => word[0]).join('');
+};
+
+const Activity = ({ data, userId }) => {
+  const handleClick = () => {
+    window.open(data.facebookLink, '_blank');
+  };
+
+  const handleJoin = () => {};
   return (
-    <Grid className="activity" container>
-      <Grid item xs={12} sm={9}>
-        <div className="content">
-          <h4>[ĐĂNG KÝ THAM GIA THỰC HIỆN VIDEO TẾT 2022]</h4>
-          <h5>Huỳnh Quang Huy - K18 - Nhân Sự</h5>
-          <p>
-            Hòa nhịp cùng không khí rộn ràng chào Xuân, hứng khởi đón Tết thì sắp tới BĐH sẽ có chuỗi video về Tết 2022. Các thông tin về video đã được trình
-            bày trong form đăng ký, mọi người đọc kỹ nhé.
-          </p>
-          <a href="#">Link bài đăng trên Facebook</a>
-        </div>
-      </Grid>
-      <Grid item xs={12} sm={3}>
-        <div className="action-container">
-          <div className="action">
-            <div className="flex">
-              <EventBusyIcon />
-              <p>
-                <span>Deadline: </span>10/01/2022
-              </p>
-            </div>
-            <div className="flex">
-              <PeopleAltIcon />
-              <p>
-                <span>Người tham gia: </span>50
-              </p>
-            </div>
+    <div style={{ background: '#ffffff' }}>
+      <Grid className="activity" container>
+        <Grid item xs={12} sm={9}>
+          <div className="content">
+            <h4>[{data.title}]</h4>
+            <h5>
+              {dateFormatter(data.dateCreated)} - {data.creatorId.fullName} - K{data.creatorId.schoolYear} - {reduceDepartmentName(data.creatorId.department)}
+            </h5>
+            <p>{data.content}</p>
+            <p className="link" onClick={handleClick}>
+              Link bài đăng trên Facebook
+            </p>
           </div>
-          <Button className="btn" variant="contained" fullWidth>
-            Tham gia
-          </Button>
-        </div>
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          <div className="action-container">
+            <div className="action">
+              <div className="flex">
+                <EventBusyIcon />
+                <p>
+                  <span>Hết hạn: </span>
+                  {dateFormatter(data.expireDate)}
+                </p>
+              </div>
+              <div className="flex">
+                <EmojiEventsIcon />
+                <p>
+                  <span>Điểm cống hiến: </span>
+                  {data.point}
+                </p>
+              </div>
+              <div className="flex">
+                <PeopleAltIcon />
+                <p>
+                  <span>Người tham gia: </span>
+                  {data.participants.length}
+                </p>
+              </div>
+            </div>
+            {data.participants.includes(userId) ? (
+              <Button className="btn" variant="contained" color="error" fullWidth onClick={handleJoin}>
+                Hủy tham gia
+              </Button>
+            ) : (
+              <Button className="btn" variant="contained" fullWidth onClick={handleJoin}>
+                Tham gia
+              </Button>
+            )}
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 };
 

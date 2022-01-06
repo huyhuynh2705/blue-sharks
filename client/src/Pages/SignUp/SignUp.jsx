@@ -12,6 +12,22 @@ import './style.css';
 
 import { signUp } from '../../actions/auth';
 
+const validateForm = (form) => {
+  if (form.username.includes(' ') || form.password.includes(' ')) {
+    alert('Tên đăng nhập và mật khẩu không chứa khoảng trắng.');
+    return false;
+  }
+  if (form.username.length < 3 || form.password.length < 3 || form.username.length > 20 || form.password.length > 20) {
+    alert('Tên đăng nhập và mật khẩu phải từ 3-20 ký tự.');
+    return false;
+  }
+  if (isNaN(form.studentId) || !(Number(form.studentId.slice(0, 2)) > 0 && Number(form.studentId.slice(0, 2)) < 99) || form.studentId.length !== 7) {
+    alert('Sai định dạng mã số sinh viên.');
+    return false;
+  }
+  return true;
+};
+
 export default function SignUp() {
   const [form, setform] = React.useState({
     username: '',
@@ -23,7 +39,9 @@ export default function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signUp(form));
+    if (validateForm(form)) {
+      dispatch(signUp(form));
+    }
   };
 
   const handleChange = (e) => {

@@ -4,10 +4,13 @@ const activitiesReducer = (state = { activities: [], isLoading: true, numberOfPa
       return { ...state, isLoading: true };
     case 'END_LOADING_ACTIVITIES':
       return { ...state, isLoading: false };
+
+    case 'CREATE_ACTIVITY':
+      return { ...state, activities: [...state.activities, action.payload] };
     case 'GET_ACTIVITIES':
       return {
         ...state,
-        members: action.payload.activities,
+        activities: action.payload.activities,
         currentPage: action.payload.currentPage,
         numberOfPages: action.payload.numberOfPages,
         total: action.payload.total,

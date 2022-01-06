@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import authRoute from './routes/auth.js';
 import memberRoute from './routes/member.js';
 import membersRoute from './routes/members.js';
+import activitiesRoute from './routes/activities.js';
 
 const app = express();
 
@@ -22,17 +23,18 @@ app.get('/', (req, res) => {
 });
 
 const allowedOrigins = ['http://localhost:3000', 'https://bluesharks.netlify.app'];
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.indexOf(origin) === -1) {
-        const msg = 'The CORS policy for this site does not ' + 'allow access from the specified Origin.';
-        return callback(msg, false);
-      }
-      return callback(null, true);
-    },
-  })
-);
+app.use(cors());
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (!origin || allowedOrigins.indexOf(origin) === -1) {
+//         const msg = 'The CORS policy for this site does not ' + 'allow access from the specified Origin.';
+//         return callback(msg, false);
+//       }
+//       return callback(null, true);
+//     },
+//   })
+// );
 
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Hello World' });
@@ -40,6 +42,7 @@ app.get('/', (req, res) => {
 app.use('/auth', authRoute);
 app.use('/member', memberRoute);
 app.use('/members', membersRoute);
+app.use('/activities', activitiesRoute);
 
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })

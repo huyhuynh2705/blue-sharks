@@ -13,7 +13,7 @@ const Detail = ({ members, idDetail, setIdDetail }) => {
     <div className="detail">
       <h3>Thông tin cá nhân</h3>
       <Grid container>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <p>Họ và tên: {data.fullName}</p>
           <p>Mã số sinh viên: {data.studentId}</p>
           <p>Khóa: K{data.schoolYear}</p>
@@ -25,7 +25,7 @@ const Detail = ({ members, idDetail, setIdDetail }) => {
           <p>Email cá nhân: {data.email}</p>
           <p>Học tại cơ sở : {data.base}</p>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <p>Ban chuyên môn: {data.department}</p>
           <p>Ngày tham gia Ban Điều Hành: {data.joinDate}</p>
           <p>Vai trò: {data.role}</p>
