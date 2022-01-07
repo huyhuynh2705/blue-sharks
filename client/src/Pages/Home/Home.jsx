@@ -5,6 +5,7 @@ import Sidebar from '../../components/SideBar/SideBar';
 import Account from '../../components/Account/Account';
 import Members from '../../components/Members/Members';
 import Activities from '../../components/Activities/Activities';
+import './style.css';
 
 const renderTab = (tab) => {
   switch (tab) {
@@ -24,14 +25,16 @@ const Home = () => {
   return (
     <div>
       <ApplicationBar />
-      <Grid container>
-        <Grid item xs={12} sm={2}>
-          <Sidebar tab={tab} setTab={setTab} />
+      <div className="home-container">
+        <Grid container>
+          <Grid item xs={12} sm={2}>
+            <Sidebar tab={tab} setTab={setTab} />
+          </Grid>
+          <Grid item xs={12} sm={10}>
+            {renderTab(tab)}
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={10}>
-          {renderTab(tab)}
-        </Grid>
-      </Grid>
+      </div>
     </div>
   );
 };

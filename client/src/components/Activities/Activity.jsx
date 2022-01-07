@@ -77,7 +77,7 @@ const Activity = ({ data, userId, setUpdateActivity, setUpdateActivityId }) => {
             <div></div>
           )}
         </div>
-        <p>{data.content}</p>
+        <p className="content">{data.content}</p>
         <p className="link" onClick={handleClick}>
           Link bài đăng trên Facebook
         </p>
@@ -105,9 +105,9 @@ const Activity = ({ data, userId, setUpdateActivity, setUpdateActivityId }) => {
           </div>
         </div>
         {data.participants.includes(userId) ? (
-          <JoinButton color={'error'} text={'Hủy tham gia'} activityId={data._id} />
+          <JoinButton color={'error'} text={'Hủy tham gia'} expireDate={data.expireDate} activityId={data._id} />
         ) : (
-          <JoinButton color={'primary'} text={'Tham gia'} activityId={data._id} />
+          <JoinButton color={'primary'} text={'Tham gia'} expireDate={data.expireDate} activityId={data._id} />
         )}
       </div>
     </div>

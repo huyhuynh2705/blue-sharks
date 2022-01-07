@@ -8,6 +8,13 @@
 
 .activities .btn {
   margin-bottom: 10px;
+  width: 40%;
+}
+
+.activities .loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .activity {
@@ -29,6 +36,11 @@
 
 .activity h4 span {
   font-weight: 500;
+}
+
+.activity .content {
+  max-height: 200px;
+  overflow: auto;
 }
 
 .activity .action {
@@ -73,9 +85,9 @@
   }
 
   .activities .btn {
-    margin-top: 10px;
-    margin-bottom: 0px;
+    margin-top: 5px;
     width: 100%;
+    padding: 0px 5px;
   }
 
   .activities .calendar {

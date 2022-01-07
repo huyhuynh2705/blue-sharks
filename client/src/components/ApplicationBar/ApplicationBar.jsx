@@ -33,14 +33,16 @@ export default function ApplicationBar() {
   }, []);
 
   return (
-    <div className="container">
-      <a href="/" className="container">
-        <img className="logo" src={Logo} alt="Logo" />
-        <p>HCMUT Blue Sharks</p>
-      </a>
-      <p className="button" onClick={handleClick}>
-        Đăng xuất
-      </p>
+    <div className="fixed">
+      <div className="container">
+        <a href="/" className="container">
+          <img className="logo" src={Logo} alt="Logo" />
+          <p>HCMUT Blue Sharks</p>
+        </a>
+        <p className="button" onClick={handleClick}>
+          Đăng xuất
+        </p>
+      </div>
     </div>
   );
 }

@@ -29,9 +29,11 @@ const Activities = () => {
       <div className="activities">
         <Grid container>
           <Grid item xs={12} sm={12} md={9}>
-            <Button className="btn" variant="contained" color="primary" onClick={handleClick}>
-              + Hoạt động mới
-            </Button>
+            <div className="btn">
+              <Button variant="contained" color="primary" fullWidth onClick={handleClick}>
+                + Hoạt động mới
+              </Button>
+            </div>
             {!data.isLoading ? (
               <>
                 {data.activities.length ? (
@@ -43,7 +45,7 @@ const Activities = () => {
                 )}
               </>
             ) : (
-              <div>
+              <div className="loading">
                 <CircularProgress />
               </div>
             )}

@@ -1,3 +1,10 @@
+.fixed {
+  top: 0;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+}
+
 .container {
   padding: 5px 10px;
   background-color: #2c84c6;
