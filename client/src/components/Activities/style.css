@@ -1,12 +1,13 @@
 .activities {
   margin: 10px;
 }
-.activities .btn {
-  margin-bottom: 10px;
-}
 
 .activities .calendar {
   padding-left: 10px;
+}
+
+.activities .btn {
+  margin-bottom: 10px;
 }
 
 .activity {
@@ -17,15 +18,22 @@
   margin-bottom: 10px;
 }
 
-.activity .content {
-  padding-right: 10px;
+.activity .title {
+  display: flex;
+  justify-content: space-between;
 }
 
-.activity .action-container {
+.activity .title div {
+  display: inline-block;
+}
+
+.activity h4 span {
+  font-weight: 500;
+}
+
+.activity .action {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  justify-content: space-evenly;
 }
 
 .activity .action .flex {
@@ -88,11 +96,6 @@
 
   .activity .action p span {
     display: none;
-  }
-
-  .activity .action {
-    display: flex;
-    justify-content: space-evenly;
   }
 
   .activity .action .flex {

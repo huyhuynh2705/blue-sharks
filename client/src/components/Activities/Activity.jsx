@@ -1,10 +1,13 @@
-import React from 'react';
-import { Grid } from '@mui/material';
+import React, { useState } from 'react';
+import { Button, Menu, MenuItem } from '@mui/material';
 import './style.css';
 import EventBusyIcon from '@mui/icons-material/EventBusy';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import JoinButton from './JoinButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import { deleteActivity } from '../../actions/activities';
+import { useDispatch } from 'react-redux';
 
 const dateFormatter = (date) => {
   return date.slice(8, 10) + '/' + date.slice(5, 7) + '/' + date.slice(0, 4);
@@ -15,59 +18,98 @@ const reduceDepartmentName = (name) => {
   return words.map((word) => word[0]).join('');
 };
 
-const Activity = ({ data, userId }) => {
+const Activity = ({ data, userId, setUpdateActivity, setUpdateActivityId }) => {
+  const dispatch = useDispatch();
   const handleClick = () => {
     window.open(data.facebookLink, '_blank');
+  };
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleUpdate = () => {
+    setUpdateActivity(true);
+    setUpdateActivityId(data._id);
+  };
+  const handleDelete = () => {
+    if (window.confirm('Xóa hoạt động?')) {
+      dispatch(deleteActivity(data._id));
+    }
   };
 
   return (
     <div style={{ background: '#ffffff' }}>
-      <Grid className="activity" container>
-        <Grid item xs={12} sm={9}>
-          <div className="content">
-            <h4>[{data.title}]</h4>
+      <div className="activity">
+        <div className="title">
+          <div>
+            <h4>
+              [{data.title}] - <span>{dateFormatter(data.dateCreated)}</span>
+            </h4>
             <h5>
-              {dateFormatter(data.dateCreated)} - {data.creatorId.fullName} - K{data.creatorId.schoolYear} - {reduceDepartmentName(data.creatorId.department)}
+              {data.creatorId.fullName} - K{data.creatorId.schoolYear} - {reduceDepartmentName(data.creatorId.department)}
             </h5>
-            <p>{data.content}</p>
-            <p className="link" onClick={handleClick}>
-              Link bài đăng trên Facebook
+          </div>
+          {userId === data.creatorId._id ? (
+            <div>
+              <Button onClick={handleOpen}>
+                <MenuIcon />
+              </Button>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  'aria-labelledby': 'basic-button',
+                }}
+              >
+                <MenuItem onClick={handleUpdate}>Chỉnh sửa</MenuItem>
+                <MenuItem onClick={handleDelete}>Xóa</MenuItem>
+                <MenuItem onClick={handleClose}>Đóng</MenuItem>
+              </Menu>
+            </div>
+          ) : (
+            <div></div>
+          )}
+        </div>
+        <p>{data.content}</p>
+        <p className="link" onClick={handleClick}>
+          Link bài đăng trên Facebook
+        </p>
+        <div className="action">
+          <div className="flex">
+            <EventBusyIcon />
+            <p>
+              <span>Hết hạn: </span>
+              {dateFormatter(data.expireDate)}
             </p>
           </div>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <div className="action-container">
-            <div className="action">
-              <div className="flex">
-                <EventBusyIcon />
-                <p>
-                  <span>Hết hạn: </span>
-                  {dateFormatter(data.expireDate)}
-                </p>
-              </div>
-              <div className="flex">
-                <EmojiEventsIcon />
-                <p>
-                  <span>Điểm cống hiến: </span>
-                  {data.point}
-                </p>
-              </div>
-              <div className="flex">
-                <PeopleAltIcon />
-                <p>
-                  <span>Người tham gia: </span>
-                  {data.participants.length}
-                </p>
-              </div>
-            </div>
-            {data.participants.includes(userId) ? (
-              <JoinButton color={'error'} text={'Hủy tham gia'} activityId={data._id} />
-            ) : (
-              <JoinButton color={'primary'} text={'Tham gia'} activityId={data._id} />
-            )}
+          <div className="flex">
+            <EmojiEventsIcon />
+            <p>
+              <span>Điểm cống hiến: </span>
+              {data.point}
+            </p>
           </div>
-        </Grid>
-      </Grid>
+          <div className="flex">
+            <PeopleAltIcon />
+            <p>
+              <span>Người tham gia: </span>
+              {data.participants.length}
+            </p>
+          </div>
+        </div>
+        {data.participants.includes(userId) ? (
+          <JoinButton color={'error'} text={'Hủy tham gia'} activityId={data._id} />
+        ) : (
+          <JoinButton color={'primary'} text={'Tham gia'} activityId={data._id} />
+        )}
+      </div>
     </div>
   );
 };

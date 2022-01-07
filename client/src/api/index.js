@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const API = axios.create({ baseURL: process.env.REACT_APP_SERVER_DOMAIN });
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+const API = axios.create({ baseURL: process.env.REACT_APP_SERVER_DOMAIN });
+// const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
@@ -17,3 +17,5 @@ export const getMembers = (page) => API.get(`/members?page=${page}`);
 export const getActivities = (page) => API.get(`/activities?page=${page}`);
 export const createActivity = (form) => API.post('/activities', form);
 export const joinActivity = (activityId) => API.put(`/activities/${activityId}/join`);
+export const deleteActivity = (activityId) => API.delete(`/activities/${activityId}/delete`);
+export const updateActivity = (activityId, form) => API.put(`/activities/${activityId}`, form);

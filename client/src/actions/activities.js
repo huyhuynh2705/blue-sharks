@@ -33,3 +33,26 @@ export const joinActivity = (activityId) => async (dispatch) => {
     console.log('error: ', error);
   }
 };
+
+export const deleteActivity = (activityId) => async (dispatch) => {
+  try {
+    dispatch({ type: 'START_LOADING_ACTIVITIES' });
+    const { data } = await api.deleteActivity(activityId);
+    dispatch({ type: 'DELETE_ACTIVITY', payload: data });
+    dispatch({ type: 'END_LOADING_ACTIVITIES' });
+  } catch (error) {
+    console.log('error: ', error);
+  }
+};
+
+export const updateActivity = (activityId, form, setUpdateActivity) => async (dispatch) => {
+  try {
+    dispatch({ type: 'START_LOADING_ACTIVITIES' });
+    const { data } = await api.updateActivity(activityId, form);
+    dispatch({ type: 'UPDATE_ACTIVITY', payload: data });
+    setUpdateActivity(false);
+    dispatch({ type: 'END_LOADING_ACTIVITIES' });
+  } catch (error) {
+    console.log('error: ', error);
+  }
+};

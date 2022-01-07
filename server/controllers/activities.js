@@ -65,7 +65,6 @@ export const joinActivity = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(activityId)) return res.status(404).send(`No activity with id: ${activityId}`);
 
     const activity = await ActivityModel.findById(activityId);
-    let updatePoint;
 
     const index = activity.participants.findIndex((id) => String(id) === req.userId);
     if (index === -1) {
@@ -81,6 +80,51 @@ export const joinActivity = async (req, res) => {
     });
     const updatedActivity = await ActivityModel.findByIdAndUpdate(activityId, activity, { new: true });
     res.status(200).json({ updatedParticipants: updatedActivity.participants, _id: updatedActivity._id, point: oldUser.point });
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
+export const deleteActivity = async (req, res) => {
+  const { activityId } = req.params;
+  try {
+    if (!req.userId) {
+      return res.json({ message: 'Unauthenticated' });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(activityId)) return res.status(404).send(`No activity with id: ${activityId}`);
+
+    const activity = await ActivityModel.findById(activityId);
+
+    if (String(activity.creatorId) === String(req.userId)) {
+      await ActivityModel.findByIdAndRemove(activityId);
+      res.status(200).json(activityId);
+    } else {
+      return res.json({ message: 'Unauthenticated' });
+    }
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
+export const updateActivity = async (req, res) => {
+  const { activityId } = req.params;
+  const { title, content, facebookLink, point, expireDate } = req.body;
+
+  try {
+    if (!req.userId) {
+      return res.json({ message: 'Unauthenticated' });
+    }
+    if (!mongoose.Types.ObjectId.isValid(activityId)) return res.status(404).send(`No activity with id: ${activityId}`);
+    const offset = new Date().getTimezoneOffset() * 60 * 1000;
+    const dateExpired = new Date(new Date(Number(expireDate.slice(6, 10)), Number(expireDate.slice(3, 5)) - 1, Number(expireDate.slice(0, 2))) - offset);
+
+    const oldActivity = await ActivityModel.findOneAndUpdate(
+      activityId,
+      { title, content, facebookLink, point, expireDate: dateExpired },
+      { new: true }
+    ).populate({ path: 'creatorId', select: ['fullName', 'schoolYear', 'department'] });
+    res.status(200).json(oldActivity);
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

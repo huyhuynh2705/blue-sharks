@@ -9,7 +9,7 @@ const JoinButton = ({ color, text, activityId }) => {
     dispatch(joinActivity(activityId));
   };
   return (
-    <Button className="btn" variant="contained" color={color} fullWidth onClick={handleJoin}>
+    <Button variant="contained" color={color} fullWidth onClick={handleJoin}>
       {text}
     </Button>
   );
