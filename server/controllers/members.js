@@ -5,9 +5,9 @@ const LIMIT = 20;
 export const getMembers = async (req, res) => {
   const { page } = req.query;
   try {
-    const startIndex = (Number(page) - 1) * LIMIT;
+    // const startIndex = (Number(page) - 1) * LIMIT;
     const total = await UserModel.countDocuments();
-    const members = await UserModel.find().sort({ _id: -1 }).limit(LIMIT).skip(startIndex).lean();
+    const members = await UserModel.find().sort({ _id: -1 }).lean();
 
     res.status(201).json({
       members,

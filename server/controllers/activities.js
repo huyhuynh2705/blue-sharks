@@ -7,12 +7,10 @@ const LIMIT = 10;
 export const getActivities = async (req, res) => {
   const { page } = req.query;
   try {
-    const startIndex = (Number(page) - 1) * LIMIT;
+    // const startIndex = (Number(page) - 1) * LIMIT;
     const total = await ActivityModel.countDocuments();
     const activities = await ActivityModel.find()
       .sort({ _id: -1 })
-      .limit(LIMIT)
-      .skip(startIndex)
       .lean()
       .populate({ path: 'creatorId', select: ['fullName', 'schoolYear', 'department'] });
 
