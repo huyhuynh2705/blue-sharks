@@ -10,3 +10,14 @@ export const getMembers = (page) => async (dispatch) => {
     alert(error.response.data.message);
   }
 };
+
+export const filterMembers = (form, page) => async (dispatch) => {
+  try {
+    dispatch({ type: 'START_LOADING_MEMBERS' });
+    const { data } = await api.filterMembers(form, page);
+    dispatch({ type: 'FILTER_MEMBERS', payload: data });
+    dispatch({ type: 'END_LOADING_MEMBERS' });
+  } catch (error) {
+    alert(error.response.data.message);
+  }
+};

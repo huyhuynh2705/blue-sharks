@@ -14,7 +14,7 @@ function createData(
   transport,
   gender,
   joinDate,
-  points,
+  point,
   role,
   email,
   facebook,
@@ -34,7 +34,7 @@ function createData(
     transport,
     gender,
     joinDate,
-    points,
+    point,
     role,
     email,
     facebook,
@@ -60,7 +60,7 @@ const Table = ({ data, setIdDetail }) => {
         item.transport,
         item.gender,
         item.joinDate,
-        item.points,
+        item.point,
         item.role,
         item.email,
         item.facebook,
@@ -111,7 +111,7 @@ const Table = ({ data, setIdDetail }) => {
                 <td>{row.transport}</td>
                 <td>{row.gender}</td>
                 <td>{row.joinDate}</td>
-                <td>{row.points}</td>
+                <td>{row.point}</td>
                 <td>{row.role}</td>
                 <td>{row.email}</td>
                 <td>{row.facebook}</td>

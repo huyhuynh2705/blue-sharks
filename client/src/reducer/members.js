@@ -8,6 +8,12 @@ const membersReducer = (state = { members: [], isLoading: true, numberOfPages: 1
       return {
         ...state,
         members: action.payload.members,
+        total: action.payload.total,
+      };
+    case 'FILTER_MEMBERS':
+      return {
+        ...state,
+        members: action.payload.members,
         currentPage: action.payload.currentPage,
         numberOfPages: action.payload.numberOfPages,
         total: action.payload.total,

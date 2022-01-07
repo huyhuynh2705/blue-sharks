@@ -72,6 +72,7 @@ const UpdateActivity = ({ setUpdateActivity, data }) => {
           className="input"
           defaultValue={form.point}
           required
+          type="number"
           name="point"
           variant="outlined"
           label="Điểm cống hiến"

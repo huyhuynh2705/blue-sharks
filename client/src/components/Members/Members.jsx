@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import { getMembers } from '../../actions/members';
 import Detail from './Detail';
 import Table from './Table';
+import FilterMember from '../FilterMember/FilterMember';
 
 const Members = () => {
   const [idDetail, setIdDetail] = useState('');
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.members);
 
-  useEffect(() => {
-    dispatch(getMembers(1));
-  }, []);
-
   return idDetail === '' ? (
-    <div className="members">{!data.isLoading ? <Table data={data.members} setIdDetail={setIdDetail} /> : <CircularProgress />}</div>
+    <div className="members">
+      <FilterMember />
+      {!data.isLoading ? <Table data={data.members} setIdDetail={setIdDetail} /> : <CircularProgress />}
+    </div>
   ) : (
     <>{!data.isLoading ? <Detail members={data.members} idDetail={idDetail} setIdDetail={setIdDetail} /> : <CircularProgress />}</>
   );

@@ -41,7 +41,7 @@ const NewActivity = ({ setNewActivity }) => {
         <TextField className="input" required name="title" variant="outlined" label="Tiêu đề" fullWidth onChange={handleChange} />
         <TextField className="input" required name="content" variant="outlined" label="Nội dung" fullWidth onChange={handleChange} />
         <TextField className="input" required name="facebookLink" variant="outlined" label="Link Facebook" fullWidth onChange={handleChange} />
-        <TextField className="input" required name="point" variant="outlined" label="Điểm cống hiến" fullWidth onChange={handleChange} />
+        <TextField className="input" type="number" required name="point" variant="outlined" label="Điểm cống hiến" fullWidth onChange={handleChange} />
         <TextField
           className="input"
           required

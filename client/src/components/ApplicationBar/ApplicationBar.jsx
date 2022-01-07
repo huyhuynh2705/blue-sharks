@@ -40,7 +40,7 @@ export default function ApplicationBar() {
           <p>HCMUT Blue Sharks</p>
         </a>
         <p className="button" onClick={handleClick}>
-          Đăng xuất
+          Hi {user.result.fullName.split(' ')[user.result.fullName.split(' ').length - 1]}! Đăng xuất
         </p>
       </div>
     </div>

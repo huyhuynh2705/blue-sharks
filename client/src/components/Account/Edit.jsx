@@ -90,6 +90,7 @@ const Edit = ({ setEdit, data }) => {
               style={{ marginBottom: '10px' }}
               name="schoolYear"
               variant="outlined"
+              type="number"
               label="Khóa (chỉ ghi số)"
               defaultValue={data.schoolYear}
               fullWidth
