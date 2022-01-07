@@ -14,7 +14,7 @@ const authReducer = (state = { authData: null, isLoading: true }, action) => {
       profile.result.point = action.payload.point;
       localStorage.setItem('profile', JSON.stringify(profile));
       return { ...state, authData: profile };
-    case 'LOG__OUT':
+    case 'LOG_OUT':
       localStorage.clear();
       return { ...state, authData: null };
     default:
