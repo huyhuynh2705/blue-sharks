@@ -9,7 +9,6 @@ dotenv.config();
 const secret = process.env.SECRET_CODE;
 export const updateMember = async (req, res) => {
   const {
-    id,
     username,
     password,
     address,
@@ -30,7 +29,10 @@ export const updateMember = async (req, res) => {
     homeTown,
   } = req.body;
   try {
-    const oldUser = await UserModel.findById(id);
+    if (!req.userId) {
+      return res.json({ message: 'Unauthenticated' });
+    }
+    const oldUser = await UserModel.findById(req.userId);
     if (!oldUser) return res.status(404).json({ message: "User doesn't exists" });
 
     if (oldUser.username !== username) {
@@ -83,7 +85,7 @@ export const updateMember = async (req, res) => {
       };
     }
 
-    const result = await UserModel.findByIdAndUpdate(oldUser._id, updateData, {
+    const result = await UserModel.findByIdAndUpdate(req.userId, updateData, {
       new: true,
     });
     const token = jwt.sign({ username: result.username, id: result._id }, secret, { expiresIn: '1h' });

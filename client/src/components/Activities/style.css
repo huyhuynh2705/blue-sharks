@@ -1,6 +1,9 @@
 .activities {
   margin: 10px;
 }
+.activities .btn {
+  margin-bottom: 10px;
+}
 
 .activities .calendar {
   padding-left: 10px;
@@ -59,6 +62,12 @@
 @media screen and (max-width: 600px) {
   .activities {
     margin: 0px;
+  }
+
+  .activities .btn {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    width: 100%;
   }
 
   .activities .calendar {

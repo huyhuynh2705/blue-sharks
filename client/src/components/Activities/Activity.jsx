@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import './style.css';
 import EventBusyIcon from '@mui/icons-material/EventBusy';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import JoinButton from './JoinButton';
 
 const dateFormatter = (date) => {
   return date.slice(8, 10) + '/' + date.slice(5, 7) + '/' + date.slice(0, 4);
@@ -19,7 +20,6 @@ const Activity = ({ data, userId }) => {
     window.open(data.facebookLink, '_blank');
   };
 
-  const handleJoin = () => {};
   return (
     <div style={{ background: '#ffffff' }}>
       <Grid className="activity" container>
@@ -61,13 +61,9 @@ const Activity = ({ data, userId }) => {
               </div>
             </div>
             {data.participants.includes(userId) ? (
-              <Button className="btn" variant="contained" color="error" fullWidth onClick={handleJoin}>
-                Hủy tham gia
-              </Button>
+              <JoinButton color={'error'} text={'Hủy tham gia'} activityId={data._id} />
             ) : (
-              <Button className="btn" variant="contained" fullWidth onClick={handleJoin}>
-                Tham gia
-              </Button>
+              <JoinButton color={'primary'} text={'Tham gia'} activityId={data._id} />
             )}
           </div>
         </Grid>

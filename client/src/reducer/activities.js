@@ -4,9 +4,15 @@ const activitiesReducer = (state = { activities: [], isLoading: true, numberOfPa
       return { ...state, isLoading: true };
     case 'END_LOADING_ACTIVITIES':
       return { ...state, isLoading: false };
-
+    case 'JOIN_ACTIVITY':
+      const updatedActivity = state.activities.filter((activity) => activity._id === action.payload._id)[0];
+      updatedActivity.participants = action.payload.updatedParticipants;
+      return {
+        ...state,
+        activities: state.activities.map((activity) => (activity._id === action.payload._id ? updatedActivity : activity)),
+      };
     case 'CREATE_ACTIVITY':
-      return { ...state, activities: [...state.activities, action.payload] };
+      return { ...state, activities: [action.payload, ...state.activities] };
     case 'GET_ACTIVITIES':
       return {
         ...state,

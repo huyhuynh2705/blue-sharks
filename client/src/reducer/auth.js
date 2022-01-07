@@ -9,6 +9,11 @@ const authReducer = (state = { authData: null, isLoading: true }, action) => {
     case 'UPDATE_PROFILE':
       localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
       return { ...state, authData: action.data };
+    case 'JOIN_ACTIVITY':
+      const profile = JSON.parse(localStorage.getItem('profile'));
+      profile.result.point = action.payload.point;
+      localStorage.setItem('profile', JSON.stringify(profile));
+      return { ...state, authData: profile };
     case 'LOG__OUT':
       localStorage.clear();
       return { ...state, authData: null };

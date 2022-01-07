@@ -14,7 +14,7 @@ const userSchema = mongoose.Schema({
   base: { type: String, required: true },
   department: { type: String, required: true },
   joinDate: { type: String, required: true },
-  points: { type: Number, required: true },
+  point: { type: Number, required: true },
   transport: { type: String, required: true },
   facebook: { type: String, required: true },
   email: { type: String, required: true },

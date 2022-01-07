@@ -50,7 +50,7 @@ export const signUp = async (req, res) => {
       phoneNumber: 'none',
       base: 'none',
       department: 'none',
-      points: 0,
+      point: 0,
       transport: 'none',
       facebook: 'none',
       email: 'none',

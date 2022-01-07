@@ -28,6 +28,7 @@ const Detail = ({ members, idDetail, setIdDetail }) => {
         <Grid item xs={12} sm={6}>
           <p>Ban chuyên môn: {data.department}</p>
           <p>Ngày tham gia Ban Điều Hành: {data.joinDate}</p>
+          <p>Điểm cống hiến: {data.point}</p>
           <p>Vai trò: {data.role}</p>
           <p>Địa chỉ ở TP.HCM: {data.address}</p>
           <p>Phương tiện di chuyển: {data.transport}</p>
