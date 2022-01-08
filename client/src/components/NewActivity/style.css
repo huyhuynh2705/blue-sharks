@@ -1,6 +1,8 @@
 .newactivity {
-  margin: 10px auto;
-  width: 500px;
+  margin: 10px 0px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .newactivity p {
@@ -23,8 +25,7 @@
 
 @media screen and (max-width: 600px) {
   .newactivity {
-    margin: 10px 5px;
-    width: auto;
+    margin: 0px;
   }
   .newactivity .input {
     margin: 5px 0px;

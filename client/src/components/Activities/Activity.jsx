@@ -79,7 +79,7 @@ const Activity = ({ data, userId, setUpdateActivity, setUpdateActivityId }) => {
             <div></div>
           )}
         </div>
-        <p className="content">{data.content}</p>
+        <p className="content" dangerouslySetInnerHTML={{ __html: data.content }}></p>
         <p className="link" onClick={handleClick}>
           Link bài đăng trên Facebook
         </p>
