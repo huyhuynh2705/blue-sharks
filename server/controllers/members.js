@@ -2,6 +2,16 @@ import UserModel from '../models/user.js';
 
 const LIMIT = 20;
 
+const createQuery = (formObject) => {
+  const query = {};
+  for (let item in formObject) {
+    if (formObject[item] !== '') {
+      query[item] = formObject[item];
+    }
+  }
+  return query;
+};
+
 export const getMembers = async (req, res) => {
   const { page } = req.query;
   try {
@@ -35,12 +45,16 @@ export const filterMembers = async (req, res) => {
   }
 };
 
-const createQuery = (formObject) => {
-  const query = {};
-  for (let item in formObject) {
-    if (formObject[item] !== '') {
-      query[item] = formObject[item];
-    }
+export const getParticipants = async (req, res) => {
+  const participantsIdArray = req.body;
+  try {
+    const participants = await UserModel.find({ _id: { $in: participantsIdArray } })
+      .select(['fullName', 'schoolYear', 'department', 'phoneNumber'])
+      .sort({ _id: -1 })
+      .lean();
+
+    res.status(201).json(participants);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
-  return query;
 };

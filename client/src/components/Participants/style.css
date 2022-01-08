@@ -1,0 +1,44 @@
+.participants {
+  width: 40%;
+  padding: 10px;
+  background-color: #fafafa;
+  border-radius: 5px;
+  margin-top: -10%;
+}
+
+.participants h4 {
+  text-align: center;
+}
+
+.participants table {
+  width: 100%;
+  text-align: center;
+}
+
+.participants table th {
+  border: 0px;
+}
+
+.participants .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.participants div {
+  display: inline-block;
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .participants {
+    width: 100%;
+    border-radius: 0px;
+    padding: 10px 5px;
+    margin-top: -20%;
+  }
+
+  .participants table {
+    font-size: 13px;
+  }
+}

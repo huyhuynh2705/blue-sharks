@@ -62,4 +62,8 @@
     height: 30px;
     width: auto;
   }
+
+  .button {
+    font-size: 14px;
+  }
 }

@@ -22,7 +22,6 @@ const Detail = ({ members, idDetail, setIdDetail }) => {
           <p>Giới tính: {data.gender}</p>
           <p>Quê quán: {data.homeTown}</p>
           <p>Số điện thoại: {data.phoneNumber}</p>
-          <p>Email cá nhân: {data.email}</p>
           <p>Học tại cơ sở : {data.base}</p>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -32,6 +31,7 @@ const Detail = ({ members, idDetail, setIdDetail }) => {
           <p>Vai trò: {data.role}</p>
           <p>Địa chỉ ở TP.HCM: {data.address}</p>
           <p>Phương tiện di chuyển: {data.transport}</p>
+          <p>Email cá nhân: {data.email}</p>
           <p>Link Facebook: {data.facebook}</p>
           <p>Tên đăng nhập: {data.username}</p>
         </Grid>

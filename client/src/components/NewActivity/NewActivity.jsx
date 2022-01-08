@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 const initialState = { title: '', content: '', facebookLink: '', point: '', expireDate: '' };
 
 const validateForm = (form) => {
-  if (form.title.length < 3 || form.content.length < 3 || form.title.length > 500 || form.content.length > 500) {
+  if (form.title.length < 3 || form.content.length < 3 || form.title.length > 500 || form.content.length > 1000) {
     alert('Tiêu đề và Nội dung phải từ 3-500 ký tự.');
     return false;
   }
@@ -39,7 +39,7 @@ const NewActivity = ({ setNewActivity }) => {
       <p>Hoạt động mới</p>
       <form onSubmit={handleSubmit}>
         <TextField className="input" required name="title" variant="outlined" label="Tiêu đề" fullWidth onChange={handleChange} />
-        <TextField className="input" required name="content" variant="outlined" label="Nội dung" fullWidth onChange={handleChange} />
+        <TextField className="input" multiline rows={4} required name="content" variant="outlined" label="Nội dung" fullWidth onChange={handleChange} />
         <TextField className="input" required name="facebookLink" variant="outlined" label="Link Facebook" fullWidth onChange={handleChange} />
         <TextField className="input" type="number" required name="point" variant="outlined" label="Điểm cống hiến" fullWidth onChange={handleChange} />
         <TextField

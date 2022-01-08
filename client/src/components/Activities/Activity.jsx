@@ -8,6 +8,7 @@ import JoinButton from './JoinButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { deleteActivity } from '../../actions/activities';
 import { useDispatch } from 'react-redux';
+import Participants from '../Participants/Participants';
 
 const dateFormatter = (date) => {
   return date.slice(8, 10) + '/' + date.slice(5, 7) + '/' + date.slice(0, 4);
@@ -24,6 +25,7 @@ const Activity = ({ data, userId, setUpdateActivity, setUpdateActivityId }) => {
     window.open(data.facebookLink, '_blank');
   };
   const [anchorEl, setAnchorEl] = useState(null);
+  const [openParticipants, setOpenParticipants] = useState(false);
   const open = Boolean(anchorEl);
 
   const handleOpen = (event) => {
@@ -96,7 +98,7 @@ const Activity = ({ data, userId, setUpdateActivity, setUpdateActivityId }) => {
               {data.point}
             </p>
           </div>
-          <div className="flex">
+          <div className="flex text-button" onClick={() => setOpenParticipants(true)}>
             <PeopleAltIcon />
             <p>
               <span>Người tham gia: </span>
@@ -110,6 +112,11 @@ const Activity = ({ data, userId, setUpdateActivity, setUpdateActivityId }) => {
           <JoinButton color={'primary'} text={'Tham gia'} expireDate={data.expireDate} activityId={data._id} />
         )}
       </div>
+      {openParticipants ? (
+        <Participants participants={data.participants} openParticipants={openParticipants} setOpenParticipants={setOpenParticipants} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

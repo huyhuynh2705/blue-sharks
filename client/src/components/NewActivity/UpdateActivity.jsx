@@ -9,8 +9,8 @@ const dateFormatter = (date) => {
 };
 
 const validateForm = (form) => {
-  if (form.title.length < 3 || form.content.length < 3 || form.title.length > 500 || form.content.length > 500) {
-    alert('Tiêu đề và Nội dung phải từ 3-500 ký tự.');
+  if (form.title.length < 3 || form.content.length < 3 || form.title.length > 500 || form.content.length > 1000) {
+    alert('Tiêu đề và Nội dung phải từ 3-1000 ký tự.');
     return false;
   }
   if (isNaN(form.point) || Number(form.point) < 0 || Number(form.point) > 5) {
@@ -52,6 +52,8 @@ const UpdateActivity = ({ setUpdateActivity, data }) => {
           className="input"
           defaultValue={form.content}
           required
+          multiline
+          rows={4}
           name="content"
           variant="outlined"
           label="Nội dung"
