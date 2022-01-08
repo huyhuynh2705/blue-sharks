@@ -1,9 +1,10 @@
 .participants {
-  width: 40%;
+  width: 60%;
   padding: 10px;
   background-color: #fafafa;
   border-radius: 5px;
-  margin-top: -10%;
+  max-height: 70%;
+  margin-top: -5%;
 }
 
 .participants h4 {
@@ -13,6 +14,11 @@
 .participants table {
   width: 100%;
   text-align: center;
+}
+
+.participants .table-members {
+  overflow: auto;
+  max-height: 450px;
 }
 
 .participants table th {

@@ -56,7 +56,7 @@ const Participants = ({ participants, setOpenParticipants, openParticipants }) =
                 <CloseIcon />
               </Button>
             </div>
-            <div>
+            <div className="table-members">
               {rows.length ? (
                 <table>
                   <tbody>
