@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.get('/', getMembers);
 router.post('/filter', auth, filterMembers);
-router.post('/participants', getParticipants);
+router.post('/participants', auth, getParticipants);
 
 export default router;
