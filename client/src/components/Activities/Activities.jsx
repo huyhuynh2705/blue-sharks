@@ -28,41 +28,56 @@ const Activities = () => {
     }
     return (
       <div className="activities">
-        <Grid container>
-          <Grid item xs={12} sm={12} md={9}>
-            <div className="btn">
-              <Button variant="contained" color="primary" fullWidth onClick={handleClick}>
-                + Hoạt động mới
-              </Button>
-            </div>
-            {!data.isLoading ? (
-              <>
-                {data.activities.length ? (
-                  data.activities.map((item) => (
-                    <Activity
-                      data={item}
-                      key={item._id}
-                      isLoadingJoin={data.isLoadingJoin}
-                      activityJoinId={data.activityJoinId}
-                      userId={userId}
-                      setUpdateActivity={setUpdateActivity}
-                      setUpdateActivityId={setUpdateActivityId}
-                    />
-                  ))
-                ) : (
-                  <p>Không có hoạt động</p>
-                )}
-              </>
+        <InfiniteScroll
+          dataLength={data.activities.length}
+          next={fetchMoreActivities}
+          hasMore={data.hasMore}
+          loader={
+            data.isLoading ? (
+              ''
             ) : (
-              <div className="loading">
+              <div style={{ margin: '10px 0px' }}>
                 <CircularProgress />
               </div>
-            )}
+            )
+          }
+        >
+          <Grid container>
+            <Grid item xs={12} sm={12} md={9}>
+              <div className="btn">
+                <Button variant="contained" color="primary" fullWidth onClick={handleClick}>
+                  + Hoạt động mới
+                </Button>
+              </div>
+              {!data.isLoading ? (
+                <>
+                  {data.activities.length ? (
+                    data.activities.map((item) => (
+                      <Activity
+                        data={item}
+                        key={item._id}
+                        isLoadingJoin={data.isLoadingJoin}
+                        activityJoinId={data.activityJoinId}
+                        userId={userId}
+                        setUpdateActivity={setUpdateActivity}
+                        setUpdateActivityId={setUpdateActivityId}
+                      />
+                    ))
+                  ) : (
+                    <p>Không có hoạt động</p>
+                  )}
+                </>
+              ) : (
+                <div className="loading">
+                  <CircularProgress />
+                </div>
+              )}
+            </Grid>
+            <Grid className="calendar" item xs={12} sm={12} md={3}>
+              <Calendar />
+            </Grid>
           </Grid>
-          <Grid className="calendar" item xs={12} sm={12} md={3}>
-            <Calendar />
-          </Grid>
-        </Grid>
+        </InfiniteScroll>
       </div>
     );
   };
@@ -79,24 +94,7 @@ const Activities = () => {
   useEffect(() => {
     dispatch(getActivities());
   }, []);
-  return (
-    <InfiniteScroll
-      dataLength={data.activities.length}
-      next={fetchMoreActivities}
-      hasMore={data.hasMore}
-      loader={
-        data.isLoading ? (
-          ''
-        ) : (
-          <div style={{ margin: '10px 0px' }}>
-            <CircularProgress />
-          </div>
-        )
-      }
-    >
-      {renderContent(newActivity, updateActivity, data, setNewActivity, setUpdateActivity)}
-    </InfiniteScroll>
-  );
+  return renderContent(newActivity, updateActivity, data, setNewActivity, setUpdateActivity);
 };
 
 export default Activities;
