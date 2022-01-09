@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import Home from './Pages/Home/Home';
+import NotFound from './Pages/NotFound/NotFound';
 import './style.css';
 import { getUserInformationFromStorage } from './helper/index';
 
@@ -43,6 +44,7 @@ const App = () => {
             </RequireLoggedIn>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
