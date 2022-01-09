@@ -1,5 +1,5 @@
 .activities {
-  margin: 10px;
+  margin: 0px 10px;
 }
 
 .activities .calendar {
@@ -8,7 +8,7 @@
 
 .activities .btn {
   margin-bottom: 10px;
-  width: 40%;
+  width: 100%;
 }
 
 .activities .loading {
@@ -96,7 +96,6 @@
 
   .activities .btn {
     margin-top: 5px;
-    width: 100%;
     padding: 0px 5px;
   }
 

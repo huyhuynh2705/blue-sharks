@@ -1,9 +1,39 @@
 .home-container {
   margin-top: 10vh;
+  padding-top: 10px;
+}
+
+.home-container .sidebar-container {
+  position: fixed;
+  width: 250px;
+}
+
+.home-container .content-container {
+  margin-left: 250px;
+}
+
+@media screen and (max-width: 900px) {
+  .home-container .sidebar-container {
+    width: 200px;
+  }
+
+  .home-container .content-container {
+    margin-left: 200px;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .home-container {
     margin-top: 7vh;
+    padding: 0px;
+  }
+
+  .home-container .sidebar-container {
+    position: static;
+    width: 100%;
+  }
+
+  .home-container .content-container {
+    margin-left: 0px;
   }
 }

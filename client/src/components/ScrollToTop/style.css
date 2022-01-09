@@ -1,0 +1,17 @@
+.scrool-to-top {
+  position: fixed;
+  left: 85%;
+  bottom: 40px;
+  z-index: 1000;
+  padding: 0px;
+}
+
+.scrool-to-top .btn {
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .scrool-to-top {
+    left: 80%;
+  }
+}

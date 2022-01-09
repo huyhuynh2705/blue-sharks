@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Grid } from '@mui/material';
 import ApplicationBar from '../../components/ApplicationBar/ApplicationBar';
 import Sidebar from '../../components/SideBar/SideBar';
 import Account from '../../components/Account/Account';
 import Members from '../../components/Members/Members';
 import Activities from '../../components/Activities/Activities';
+import ScrollToTop from '../../components/ScrollToTop/ScrollToTop';
 import './style.css';
 
 const renderTab = (tab) => {
@@ -26,15 +26,12 @@ const Home = () => {
     <div>
       <ApplicationBar />
       <div className="home-container">
-        <Grid container>
-          <Grid item xs={12} sm={2}>
-            <Sidebar tab={tab} setTab={setTab} />
-          </Grid>
-          <Grid item xs={12} sm={10}>
-            {renderTab(tab)}
-          </Grid>
-        </Grid>
+        <div className="sidebar-container">
+          <Sidebar tab={tab} setTab={setTab} />
+        </div>
+        <div className="content-container">{renderTab(tab)}</div>
       </div>
+      <ScrollToTop />
     </div>
   );
 };
