@@ -8,13 +8,14 @@
   display: block;
   overflow-x: scroll;
   white-space: nowrap;
+  max-height: 75vh;
 }
 
 .table td,
 th {
   border: 1px solid #ddd;
   padding: 8px;
-  max-width: 200px;
+  max-width: 300px;
   overflow-y: auto;
 }
 .table td span {
