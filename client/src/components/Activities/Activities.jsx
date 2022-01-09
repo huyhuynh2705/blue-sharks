@@ -80,7 +80,20 @@ const Activities = () => {
     dispatch(getActivities());
   }, []);
   return (
-    <InfiniteScroll dataLength={data.activities.length} next={fetchMoreActivities} hasMore={data.hasMore} loader={''}>
+    <InfiniteScroll
+      dataLength={data.activities.length}
+      next={fetchMoreActivities}
+      hasMore={data.hasMore}
+      loader={
+        data.isLoading ? (
+          ''
+        ) : (
+          <div style={{ margin: '10px 0px' }}>
+            <CircularProgress />
+          </div>
+        )
+      }
+    >
       {renderContent(newActivity, updateActivity, data, setNewActivity, setUpdateActivity)}
     </InfiniteScroll>
   );
