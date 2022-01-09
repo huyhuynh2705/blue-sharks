@@ -28,14 +28,15 @@
 .activity .title {
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .activity .title div {
   display: inline-block;
 }
 
-.activity h4 span {
-  font-weight: 500;
+.activity h4 {
+  font-size: 18px;
 }
 
 .activity .content {
@@ -115,9 +116,11 @@
     max-height: 300px;
   }
 
-  .activity p,
-  h4,
-  h4 span {
+  .activity p {
+    font-size: 14px;
+  }
+
+  .activity h4 {
     font-size: 14px;
   }
 
