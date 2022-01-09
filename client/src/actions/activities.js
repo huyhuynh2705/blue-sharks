@@ -1,11 +1,20 @@
 import * as api from '../api/index.js';
 
-export const getActivities = (page) => async (dispatch) => {
+export const getActivities = () => async (dispatch) => {
   try {
     dispatch({ type: 'START_LOADING_ACTIVITIES' });
-    const { data } = await api.getActivities(page);
+    const { data } = await api.getActivities();
     dispatch({ type: 'GET_ACTIVITIES', payload: data });
     dispatch({ type: 'END_LOADING_ACTIVITIES' });
+  } catch (error) {
+    alert(error.response.data.message);
+  }
+};
+
+export const getMoreActivities = (skip) => async (dispatch) => {
+  try {
+    const { data } = await api.getMoreActivities(skip);
+    dispatch({ type: 'GET_MORE_ACTIVITIES', payload: data });
   } catch (error) {
     alert(error.response.data.message);
   }
