@@ -67,8 +67,8 @@ const Activity = ({ data, userId, isLoadingJoin, activityJoinId, setUpdateActivi
   return (
     <div style={{ background: '#ffffff' }}>
       <div className="activity">
-        <div className="title" onClick={handleViewMore}>
-          <div>
+        <div className="title">
+          <div style={{ width: '100%' }} onClick={handleViewMore}>
             <h4>[{data.title}]</h4>
             <h5>
               {data.creatorId.fullName} - K{data.creatorId.schoolYear} - {reduceDepartmentName(data.creatorId.department)} - {dateFormatter(data.dateCreated)}
