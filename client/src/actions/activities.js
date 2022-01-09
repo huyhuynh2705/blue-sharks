@@ -25,10 +25,10 @@ export const createActivity = (form, setNewActivity) => async (dispatch) => {
 
 export const joinActivity = (activityId) => async (dispatch) => {
   try {
-    dispatch({ type: 'START_LOADING_ACTIVITIES' });
+    dispatch({ type: 'START_LOADING_JOIN_ACTIVITIES', payload: activityId });
     const { data } = await api.joinActivity(activityId);
     dispatch({ type: 'JOIN_ACTIVITY', payload: data });
-    dispatch({ type: 'END_LOADING_ACTIVITIES' });
+    dispatch({ type: 'END_LOADING_JOIN_ACTIVITIES' });
   } catch (error) {
     console.log('error: ', error);
   }

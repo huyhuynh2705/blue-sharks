@@ -38,7 +38,15 @@ const Activities = () => {
               <>
                 {data.activities.length ? (
                   data.activities.map((item) => (
-                    <Activity data={item} key={item._id} userId={userId} setUpdateActivity={setUpdateActivity} setUpdateActivityId={setUpdateActivityId} />
+                    <Activity
+                      data={item}
+                      key={item._id}
+                      isLoadingJoin={data.isLoadingJoin}
+                      activityJoinId={data.activityJoinId}
+                      userId={userId}
+                      setUpdateActivity={setUpdateActivity}
+                      setUpdateActivityId={setUpdateActivityId}
+                    />
                   ))
                 ) : (
                   <p>Không có hoạt động</p>
@@ -67,26 +75,6 @@ const Activities = () => {
   }, []);
 
   return renderContent(newActivity, updateActivity, data, setNewActivity, setUpdateActivity);
-
-  // return newActivity ? (
-  //   <NewActivity setNewActivity={setNewActivity} />
-  // ) : !data.isLoading ? (
-  //   <div className="activities">
-  //     <Grid container>
-  //       <Grid item xs={12} sm={12} md={9}>
-  //         <Button className="btn" variant="contained" color="primary" onClick={handleClick}>
-  //           + Hoạt động mới
-  //         </Button>
-  //         {data.activities.length ? data.activities.map((item) => <Activity data={item} key={item._id} userId={userId} />) : <p>Không có hoạt động</p>}
-  //       </Grid>
-  //       <Grid className="calendar" item xs={12} sm={12} md={3}>
-  //         <Calendar />
-  //       </Grid>
-  //     </Grid>
-  //   </div>
-  // ) : (
-  //   <CircularProgress />
-  // );
 };
 
 export default Activities;
