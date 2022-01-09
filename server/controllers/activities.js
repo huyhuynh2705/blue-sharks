@@ -2,23 +2,42 @@ import ActivityModel from '../models/activity.js';
 import UserModel from '../models/user.js';
 import mongoose from 'mongoose';
 
-const LIMIT = 10;
+const LIMIT = 5;
 
 export const getActivities = async (req, res) => {
-  const { page } = req.query;
   try {
-    // const startIndex = (Number(page) - 1) * LIMIT;
     const total = await ActivityModel.countDocuments();
-    const activities = await ActivityModel.find()
+    const activities = await ActivityModel.find({})
       .sort({ _id: -1 })
+      .limit(LIMIT)
       .lean()
       .populate({ path: 'creatorId', select: ['fullName', 'schoolYear', 'department'] });
 
+    const hasMore = total - LIMIT > 0 ? true : false;
     res.status(201).json({
-      activities,
-      currentPage: Number(page),
-      numberOfPages: Number(Math.ceil(total / LIMIT)),
-      total: total,
+      activities: activities,
+      hasMore: hasMore,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getMoreActivities = async (req, res) => {
+  const { skip } = req.query;
+  try {
+    const total = await ActivityModel.countDocuments();
+    const activities = await ActivityModel.find({})
+      .sort({ _id: -1 })
+      .limit(LIMIT)
+      .skip(Number(skip))
+      .lean()
+      .populate({ path: 'creatorId', select: ['fullName', 'schoolYear', 'department'] });
+
+    const hasMore = total - (skip + activities.length) > 0 ? true : false;
+    res.status(201).json({
+      activities: activities,
+      hasMore: hasMore,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

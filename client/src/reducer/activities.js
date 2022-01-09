@@ -1,4 +1,4 @@
-const activitiesReducer = (state = { activities: [], isLoading: true, isLoadingJoin: false, activityJoinId: '' }, action) => {
+const activitiesReducer = (state = { activities: [], isLoading: true, isLoadingJoin: false, activityJoinId: '', hasMore: true }, action) => {
   switch (action.type) {
     case 'START_LOADING_ACTIVITIES':
       return { ...state, isLoading: true };
@@ -25,9 +25,13 @@ const activitiesReducer = (state = { activities: [], isLoading: true, isLoadingJ
       return {
         ...state,
         activities: action.payload.activities,
-        currentPage: action.payload.currentPage,
-        numberOfPages: action.payload.numberOfPages,
-        total: action.payload.total,
+        hasMore: action.payload.hasMore,
+      };
+    case 'GET_MORE_ACTIVITIES':
+      return {
+        ...state,
+        activities: state.activities.concat(action.payload.activities),
+        hasMore: action.payload.hasMore,
       };
     default:
       return state;

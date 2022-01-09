@@ -5,10 +5,11 @@ import { Grid, Button } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import 'react-calendar/dist/Calendar.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getActivities } from '../../actions/activities';
+import { getActivities, getMoreActivities } from '../../actions/activities';
 import { getUserInformationFromStorage } from '../../helper/index';
 import NewActivity from '../NewActivity/NewActivity';
 import UpdateActivity from '../NewActivity/UpdateActivity';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const Activities = () => {
   const dispatch = useDispatch();
@@ -66,15 +67,23 @@ const Activities = () => {
     );
   };
 
+  const fetchMoreActivities = () => {
+    dispatch(getMoreActivities(data.activities.length));
+  };
+
   const handleClick = (e) => {
     e.preventDefault();
     setNewActivity(true);
   };
-  useEffect(() => {
-    dispatch(getActivities(1));
-  }, []);
 
-  return renderContent(newActivity, updateActivity, data, setNewActivity, setUpdateActivity);
+  useEffect(() => {
+    dispatch(getActivities());
+  }, []);
+  return (
+    <InfiniteScroll dataLength={data.activities.length} next={fetchMoreActivities} hasMore={data.hasMore} loader={''}>
+      {renderContent(newActivity, updateActivity, data, setNewActivity, setUpdateActivity)}
+    </InfiniteScroll>
+  );
 };
 
 export default Activities;
