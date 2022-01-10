@@ -59,7 +59,7 @@ export default function SignUp() {
           alignItems: 'center',
         }}
       >
-        <img className="logo" src={Logo} alt="Logo" />
+        <img className="logo-bs" src={Logo} alt="Logo" />
         <Typography component="h1" variant="h5">
           Đăng ký
         </Typography>
