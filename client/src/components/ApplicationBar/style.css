@@ -52,7 +52,7 @@
 
 @media screen and (max-width: 600px) {
   .container {
-    height: 7vh;
+    height: 50px;
     padding: 0px 10px;
   }
   .container a p {

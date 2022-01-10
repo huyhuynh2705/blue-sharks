@@ -29,6 +29,11 @@
   .filter-form {
     gap: 5px;
   }
+
+  .filter-form .input {
+    font-size: 14px;
+  }
+
   .filter-title {
     font-size: 16px;
   }
