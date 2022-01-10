@@ -38,6 +38,8 @@ th {
   text-align: left;
   background-color: #2c84c6;
   color: white;
+  position: sticky;
+  top: -1px;
 }
 
 @media screen and (max-width: 600px) {

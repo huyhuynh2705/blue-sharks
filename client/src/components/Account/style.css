@@ -1,5 +1,9 @@
 .detail {
   padding: 10px;
+  margin: 0px 10px;
+  background-color: #fafafa;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgb(218, 218, 218);
 }
 
 .detail p {
@@ -21,6 +25,10 @@
 
 .edit {
   padding: 10px;
+  margin: 0px 10px;
+  background-color: #fafafa;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgb(218, 218, 218);
 }
 
 .edit .container {
@@ -59,8 +67,23 @@
 @media screen and (max-width: 600px) {
   .detail {
     padding: 5px;
+    margin: 0px;
   }
+
+  .detail h3 {
+    text-align: center;
+  }
+
   .detail p {
     overflow: auto;
+  }
+
+  .edit {
+    padding: 5px;
+    margin: 0px;
+  }
+
+  .edit h3 {
+    text-align: center;
   }
 }

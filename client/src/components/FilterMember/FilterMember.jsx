@@ -22,7 +22,7 @@ const faculty = [
 ];
 
 const department = ['Nhân Sự', 'Truyền Thông - Thiết Kế', 'Sự Kiện', 'Kinh Doanh', 'Hậu Cần', 'Cố Vấn'];
-const initialState = { schoolYear: '', department: '', faculty: '', base: '', gender: '', show: 10 };
+const initialState = { schoolYear: '', department: '', faculty: '', base: '', gender: '' };
 
 const FilterMember = () => {
   const dispatch = useDispatch();

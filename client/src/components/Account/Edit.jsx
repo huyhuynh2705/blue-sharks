@@ -64,7 +64,7 @@ const Edit = ({ setEdit, data }) => {
 
   return (
     <div className="edit">
-      <h3>Thông tin cá nhân</h3>
+      <h3>Cập nhật thông tin cá nhân</h3>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
