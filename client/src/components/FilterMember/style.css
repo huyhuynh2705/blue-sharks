@@ -13,11 +13,11 @@
 
 .filter-title p {
   display: inline-block;
+  width: 50%;
 }
 
-.filter-title div {
-  display: inline-block;
-  width: 30%;
+.filter-title .sort {
+  width: 50%;
 }
 
 .filter-form .input {
@@ -32,6 +32,7 @@
 
   .filter-form .input {
     font-size: 14px;
+    margin: 0px;
   }
 
   .filter-title {
@@ -39,6 +40,7 @@
   }
 
   .filter-title div {
-    width: 50%;
+    font-size: 14px;
+    width: 100%;
   }
 }

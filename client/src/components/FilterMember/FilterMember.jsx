@@ -24,12 +24,16 @@ const faculty = [
 const department = ['Nhân Sự', 'Truyền Thông - Thiết Kế', 'Sự Kiện', 'Kinh Doanh', 'Hậu Cần', 'Cố Vấn'];
 const initialState = { schoolYear: '', department: '', faculty: '', base: '', gender: '' };
 
-const FilterMember = () => {
+const FilterMember = ({ sort, setSort }) => {
   const dispatch = useDispatch();
   const [form, setForm] = useState(initialState);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleChangeSort = (e) => {
+    setSort(e.target.value);
   };
 
   const handleClick = (e) => {
@@ -48,6 +52,16 @@ const FilterMember = () => {
     <div>
       <div className="filter-title">
         <p>Lọc thành viên:</p>
+        <FormControl className="sort" fullWidth size="small">
+          <InputLabel id="sort">Sắp xếp theo</InputLabel>
+          <Select labelId="sort" id="sort" value={sort} label="Sắp xếp theo" onChange={handleChangeSort}>
+            <MenuItem value="point">Điểm cống hiến</MenuItem>
+            <MenuItem value="department">Ban chuyên môn</MenuItem>
+            <MenuItem value="schoolYear">Khóa</MenuItem>
+            <MenuItem value="faculty">Khoa</MenuItem>
+            <MenuItem value="">Không</MenuItem>
+          </Select>
+        </FormControl>
       </div>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={6}>
